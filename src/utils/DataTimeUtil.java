@@ -13,12 +13,17 @@ import java.util.Date;
 
 /**
  * @Author: zr
- * @Description:
+ * @Description: 日期格式工具类
  * @Date: 11:40 2019/8/27
  * @Modified by:
  */
 public class DataTimeUtil {
 
+    /**
+     * string 转date
+     * @param dataTimeStr dateString
+     * @return
+     */
     public static Date strToDate(String dataTimeStr){
         if (StringUtils.isBlank(dataTimeStr)) {
             return null;
@@ -28,6 +33,12 @@ public class DataTimeUtil {
     }
 
 
+    /**
+     * 指定格式string转date
+     * @param dataTimeStr
+     * @param formatStr
+     * @return
+     */
     public static Date strToDate(String dataTimeStr, String formatStr){
         if (StringUtils.isBlank(dataTimeStr)) {
             return null;
@@ -37,6 +48,11 @@ public class DataTimeUtil {
     }
 
 
+    /**
+     * date转string
+     * @param date
+     * @return
+     */
     public static String dateToStr(Date date) {
         if (date == null) {
             return StringUtils.EMPTY;
@@ -46,6 +62,12 @@ public class DataTimeUtil {
         return localDateTime.format(dateTimeFormatter);
     }
 
+    /**
+     *
+     * @param date
+     * @param dateFormatter
+     * @return
+     */
     public static String dateToStr(Date date,String dateFormatter) {
         if (date == null) {
             return StringUtils.EMPTY;
@@ -58,6 +80,12 @@ public class DataTimeUtil {
         return localDateTime.format(dateTimeFormatter);
     }
 
+    /**
+     * 转为指定格式日期格式
+     * @param dataTimeStr
+     * @param dateFormatter
+     * @return
+     */
     public static String strTostr(String dataTimeStr,String dateFormatter) {
         if (StringUtils.isBlank(dataTimeStr)) {
             return null;
@@ -69,6 +97,13 @@ public class DataTimeUtil {
         return LocalDateTime.parse(dataTimeStr).format(dateTimeFormatter);
     }
 
+    /**
+     * 增减时间
+     * @param date
+     * @param timeType
+     * @param time
+     * @return
+     */
     public static Date plusTime(Date date, Time timeType,long time) {
         LocalDateTime localDateTime = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
         switch (timeType){
@@ -96,6 +131,13 @@ public class DataTimeUtil {
     }
 
 
+    /**
+     * 计算时间差
+     * @param startTime
+     * @param endTime
+     * @param chronoUnit 计算类型 日或小时
+     * @return
+     */
     public static long dateDiffDate(String startTime,String endTime,ChronoUnit chronoUnit){
         switch (chronoUnit){
             case DAYS:
