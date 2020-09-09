@@ -7,6 +7,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 
+/**
+ * KMP 字符串匹配算法
+ *  http://www.ruanyifeng.com/blog/2013/05/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm.html
+ *
+ */
+
 public class KMPAlgorithm {
 
 
@@ -15,6 +21,11 @@ public class KMPAlgorithm {
         System.out.println(calStringMatch("ABCDABD"));
     }
 
+    /**
+     * 计算匹配表
+     * @param v
+     * @return
+     */
     public static int[] calStringMatch(String v){
         if (StringUtils.isBlank(v)){
             throw new IllegalArgumentException("string is blank");
