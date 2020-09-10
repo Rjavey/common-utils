@@ -18,7 +18,39 @@ public class KMPAlgorithm {
 
     public static void main(String[] args) {
 
-        System.out.println(calStringMatch("ABCDABD"));
+        String a = "ABCDABD";
+        String b = "ABCC";
+        System.out.println(kmp(a,b));
+
+    }
+
+    public static boolean kmp(String a,String b){
+
+        char[] chara = a.toCharArray();
+        char[] charb = b.toCharArray();
+
+        int[] table = calStringMatch(b);
+
+        int places = 0;
+        first:for (int i = 0; i < chara.length; i++) {
+            for (int j = i; j < charb.length; j++) {
+                if (chara[i] == charb[j]){
+                    places ++;
+                    if (places == charb.length){
+                        return true;
+                    }
+                    continue first;
+                } else {
+                    i += places - table[j];
+                    places = 0;
+                }
+                if (places == charb.length){
+                    return true;
+                }
+            }
+        }
+        return false;
+
     }
 
     /**
