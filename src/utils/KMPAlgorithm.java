@@ -44,13 +44,9 @@ public class KMPAlgorithm {
                     i += places - table[j];
                     places = 0;
                 }
-                if (places == charb.length){
-                    return true;
-                }
             }
         }
         return false;
-
     }
 
     /**
